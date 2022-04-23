@@ -113,6 +113,7 @@
     <Compile Include="Controllers\LancamentoController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TipoLancamentoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -128,7 +129,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Usuario\" />
+  </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FluxoCaixa.Core\FluxoCaixa.Core.csproj">
       <Project>{c31b2718-47cf-4cbb-a3f1-a125918bd32a}</Project>

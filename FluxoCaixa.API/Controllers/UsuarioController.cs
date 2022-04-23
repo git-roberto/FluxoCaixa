@@ -1,7 +1,4 @@
-﻿using FluxoCaixa.DTO;
-using FluxoCaixa.Model;
-using FluxoCaixa.Service;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,21 +7,22 @@ using Utilidades.Controllers;
 using Utilidades.DTO;
 using Utilidades.Json;
 using Utilidades.JWT;
+using Utilidades.Seguranca;
 
 namespace FluxoCaixa.API.Controllers
 {
-    public class TipoLancamentoController : BaseController
+    public class UsuarioController : BaseController
     {
         [Autorizacao]
         public ActionResult Index()
         {
-            using (TipoLancamentoService service = new TipoLancamentoService())
+            using (UsuarioService service = new UsuarioService())
             {
                 var lst = service.Listar();
 
-                var lstRetorno = lst.ToList().Select(x => x.ToDTO<TipoLancamento, TipoLancamentoDTO>()).ToList();
+                var lstRetorno = lst.ToList().Select(x => x.ToDTO<Usuario, UsuarioDTO>()).ToList();
 
-                RetornoJson<List<TipoLancamentoDTO>> retorno = new RetornoJson<List<TipoLancamentoDTO>>()
+                RetornoJson<List<UsuarioDTO>> retorno = new RetornoJson<List<UsuarioDTO>>()
                 {
                     Resultado = lstRetorno,
                     QtdRegistros = lst.Count(),
@@ -37,11 +35,11 @@ namespace FluxoCaixa.API.Controllers
         [Autorizacao]
         public ActionResult Buscar(int id)
         {
-            using (TipoLancamentoService service = new TipoLancamentoService())
+            using (UsuarioService service = new UsuarioService())
             {
-                var lstRetorno = service.Buscar(id).ToDTO<TipoLancamento, TipoLancamentoDTO>();
+                var lstRetorno = service.Buscar(id).ToDTO<Usuario, UsuarioDTO>();
 
-                RetornoJson<TipoLancamentoDTO> retorno = new RetornoJson<TipoLancamentoDTO>()
+                RetornoJson<UsuarioDTO> retorno = new RetornoJson<UsuarioDTO>()
                 {
                     Resultado = lstRetorno,
                 };
@@ -52,14 +50,14 @@ namespace FluxoCaixa.API.Controllers
 
         [HttpPost]
         [Autorizacao]
-        public ActionResult Inserir(TipoLancamentoDTO registro)
+        public ActionResult Inserir(UsuarioDTO registro)
         {
-            using (TipoLancamentoService service = new TipoLancamentoService())
+            using (UsuarioService service = new UsuarioService())
             {
-                var model = registro.ToEntity<TipoLancamento, TipoLancamentoDTO>(service.Conexao);
+                var model = registro.ToEntity<Usuario, UsuarioDTO>(service.Conexao);
                 service.Inserir(model);
 
-                RetornoJson<TipoLancamentoDTO> retorno = new RetornoJson<TipoLancamentoDTO>()
+                RetornoJson<UsuarioDTO> retorno = new RetornoJson<UsuarioDTO>()
                 {
                     Mensagem = "Registro incluído com sucesso",
                 };
@@ -70,14 +68,14 @@ namespace FluxoCaixa.API.Controllers
 
         [HttpPost]
         [Autorizacao]
-        public ActionResult Alterar(TipoLancamentoDTO registro)
+        public ActionResult Alterar(UsuarioDTO registro)
         {
-            using (TipoLancamentoService service = new TipoLancamentoService())
+            using (UsuarioService service = new UsuarioService())
             {
-                var model = registro.ToEntity<TipoLancamento, TipoLancamentoDTO>(service.Conexao);
+                var model = registro.ToEntity<Usuario, UsuarioDTO>(service.Conexao);
                 service.Alterar(model);
 
-                RetornoJson<TipoLancamentoDTO> retorno = new RetornoJson<TipoLancamentoDTO>()
+                RetornoJson<UsuarioDTO> retorno = new RetornoJson<UsuarioDTO>()
                 {
                     Mensagem = "Registro alterado com sucesso",
                 };
@@ -90,11 +88,11 @@ namespace FluxoCaixa.API.Controllers
         [Autorizacao]
         public ActionResult Excluir(int id)
         {
-            using (TipoLancamentoService service = new TipoLancamentoService())
+            using (UsuarioService service = new UsuarioService())
             {
                 service.Excluir(id);
 
-                RetornoJson<TipoLancamentoDTO> retorno = new RetornoJson<TipoLancamentoDTO>()
+                RetornoJson<UsuarioDTO> retorno = new RetornoJson<UsuarioDTO>()
                 {
                     Mensagem = "Registro excluído com sucesso",
                 };
