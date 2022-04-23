@@ -9,11 +9,13 @@ using System.Web.Mvc;
 using Utilidades.Controllers;
 using Utilidades.DTO;
 using Utilidades.Json;
+using Utilidades.JWT;
 
 namespace FluxoCaixa.API.Controllers
 {
     public class LancamentoController : BaseController
     {
+        [Autorizacao]
         public ActionResult Index()
         {
             using (LancamentoService service = new LancamentoService())
@@ -32,6 +34,7 @@ namespace FluxoCaixa.API.Controllers
             }
         }
 
+        [Autorizacao]
         public ActionResult Buscar(int id)
         {
             using (LancamentoService service = new LancamentoService())
@@ -48,6 +51,7 @@ namespace FluxoCaixa.API.Controllers
         }
 
         [HttpPost]
+        [Autorizacao]
         public ActionResult Inserir(LancamentoDTO registro)
         {
             using (LancamentoService service = new LancamentoService())
@@ -65,6 +69,7 @@ namespace FluxoCaixa.API.Controllers
         }
 
         [HttpPost]
+        [Autorizacao]
         public ActionResult Alterar(LancamentoDTO registro)
         {
             using (LancamentoService service = new LancamentoService())
@@ -82,6 +87,7 @@ namespace FluxoCaixa.API.Controllers
         }
 
         [HttpPost]
+        [Autorizacao]
         public ActionResult Excluir(int id)
         {
             using (LancamentoService service = new LancamentoService())
@@ -97,6 +103,8 @@ namespace FluxoCaixa.API.Controllers
             }
         }
 
+        [HttpPost]
+        [Autorizacao]
         public ActionResult ConsolidadoDiario()
         {
             using (LancamentoService service = new LancamentoService())
