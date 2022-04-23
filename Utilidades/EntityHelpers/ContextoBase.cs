@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
+using Utilidades.Seguranca;
 
 namespace Utilidades.EntityHelpers
 {
@@ -30,5 +31,7 @@ namespace Utilidades.EntityHelpers
             : base(strConexao)
         {
         }
+
+        public DbSet<Usuario> Usuario { get; set; }
     }
 }

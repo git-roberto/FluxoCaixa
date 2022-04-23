@@ -111,6 +111,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\GerarConexaoController.cs" />
     <Compile Include="Controllers\LancamentoController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TipoLancamentoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -127,12 +128,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Views\GerarConexao\" />
-    <Folder Include="Views\Lancamento\" />
-    <Folder Include="Views\TipoLancamento\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\FluxoCaixa.Core\FluxoCaixa.Core.csproj">
       <Project>{c31b2718-47cf-4cbb-a3f1-a125918bd32a}</Project>

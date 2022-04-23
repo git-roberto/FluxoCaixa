@@ -9,11 +9,13 @@ using System.Web.Mvc;
 using Utilidades.Controllers;
 using Utilidades.DTO;
 using Utilidades.Json;
+using Utilidades.JWT;
 
 namespace FluxoCaixa.API.Controllers
 {
     public class TipoLancamentoController : BaseController
     {
+        [Autorizacao]
         public ActionResult Index()
         {
             using (TipoLancamentoService service = new TipoLancamentoService())
