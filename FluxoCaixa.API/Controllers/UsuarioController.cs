@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Utilidades;
 using Utilidades.Controllers;
 using Utilidades.DTO;
 using Utilidades.Json;
@@ -49,11 +50,13 @@ namespace FluxoCaixa.API.Controllers
         }
 
         [HttpPost]
-        [Autorizacao]
+        [AllowAnonymous]
         public ActionResult Inserir(UsuarioDTO registro)
         {
             using (UsuarioService service = new UsuarioService())
             {
+                registro.Ativo = true;
+                registro.Senha = Criptografia.CriptografarSHA256(registro.Senha);
                 var model = registro.ToEntity<Usuario, UsuarioDTO>(service.Conexao);
                 service.Inserir(model);
 

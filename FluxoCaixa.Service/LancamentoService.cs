@@ -25,7 +25,7 @@ namespace FluxoCaixa.Service
             var consolidado = lst.GroupBy(x => x.DataLancamento).Select(x => new ConsolidadoDiarioDTO()
             {
                 Data = x.Key,
-                Valor = ((x.Where(y => y.IdTipoLancamento == 1).Sum(y => y.Valor)) - (x.Where(y => y.IdTipoLancamento == 2).Sum(y => y.Valor)))
+                Valor = ((x.Where(y => y.IdTipoLancamento == 1).Select(y => y.Valor).DefaultIfEmpty(0).Sum()) - (x.Where(y => y.IdTipoLancamento == 2).Select(y => y.Valor).DefaultIfEmpty(0).Sum()))
             }).ToList();
 
             return consolidado;

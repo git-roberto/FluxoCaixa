@@ -12,7 +12,7 @@ namespace FluxoCaixa.API.Controllers
 {
     public class GerarConexaoController : BaseController
     {
-        [Autorizacao]
+        [AllowAnonymous]
         public ActionResult Index(string server, string baseDados, string usuario, string senha)
         {
             var valor = Criptografia.CriptografarAES($"Data Source={server};Initial Catalog={baseDados};User Id={usuario};Password={senha}; MultipleActiveResultSets=True;");
